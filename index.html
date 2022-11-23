@@ -1,80 +1,75 @@
 <!DOCTYPE html>
 <html lang="en">
 
-    <head>
+<head>
 
-        <meta charset="UTF-8" />
-        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <link rel="stylesheet" href="style.css" />
-        <script
-            src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.15/lodash.min.js"></script>
-        <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.15/lodash.min.js"></script>
+    
 
-        <title>Dark BlackJack</title>
+    <title>Dark BlackJack</title>
 
-    </head>
+</head>
 
-    <body>
+<body>
 
-        <div id="general">
-            <div id="bot-Baraja">
+    <div id="general">
+        <div id="bot-Baraja">
 
-                <!--!Div interno-->
+            <!--!Div interno-->
 
-                <div id="cart">
+            <div id="cart">
 
-                    <div id="front">
-                        <img id="Carta-back" src="img/Card_Model.png"
-                            alt="HELLO" height="200px" width="100" />
-                    </div>
-
-                    <div id="back">
-                        <img id="Carta-front" src="img/heart10.png" alt="HELLO"
-                            height="200px" width="100" />
-                    </div>
-
+                <div id="front">
+                    <img id="Carta-back" src="img/Card_Model.png" alt="HELLO" height="200px" width="100" />
                 </div>
 
-                <div id="baraja">
-                    <img src="img/Card_Model.png" alt="HELLO" height="200px"
-                        width="100" />
+                <div id="back">
+                    <img id="Carta-front" src="img/heart10.png" alt="HELLO" height="200px" width="100" />
                 </div>
 
             </div>
 
-        </div>
-
-        <div id="centro">
-
-
-
-
-            <div id="picture">
-
-                <img src="img/Other_player.png" alt="pic" height="100px"
-                    width="100px">
-
+            <div id="baraja">
+                <img src="img/Card_Model.png" alt="HELLO" height="200px" width="100" />
             </div>
 
+        </div>
 
+    </div>
+
+    <div id="centro">
+
+
+
+
+        <div id="picture">
+
+            <img src="img/Other_player.png" alt="pic" height="100px" width="100px">
 
         </div>
 
-        <div id="jugador">
 
-            <a id="start" class="btn-neon" onclick="new_game()">
 
-                <span id="span1"></span>
-                <span id="span2"></span>
-                <span id="span3"></span>
-                <span id="span4"></span>
+    </div>
 
-                Comenzar
+    <div id="jugador">
 
-            </a>
+        <a id="start" class="btn-neon" onclick="new_game()">
 
-        </div>
+            <span id="span1"></span>
+            <span id="span2"></span>
+            <span id="span3"></span>
+            <span id="span4"></span>
+
+            Comenzar
+
+        </a>
+
+    </div>
     </div>
 
     <button onclick="boton()">
@@ -82,32 +77,13 @@
     </button>
 
 
-    <template id="my-template">
-        <swal-title>
-            ¿Deseas que la carta sea un AS?
-        </swal-title>
-
-        <swal-icon type="question" color="red"></swal-icon> //ICONO
-
-        <swal-button type="confirm">
-            Si
-        </swal-button>
-        <swal-button type="cancel">
-            No
-        </swal-button>
-
-        <swal-param name="allowEscapeKey" value="false" />
-            <swal-param name="customClass" value='{ "popup": "my-popup" }' />
-                <swal-function-param name="didOpen" value="popup=>
-                    console.log(popup)" />
-
-                </template>
-
-
-                <script src="/logic.js"></script>
 
 
 
-            </body>
+    <script src="/logic.js"></script>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
-        </html>
+
+</body>
+
+</html>
