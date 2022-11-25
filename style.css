@@ -181,12 +181,66 @@ hr {
     align-items: center;
     justify-content: center;
     backface-visibility: hidden;
+    animation-name: 'volteo';
     transition: 1s;
 }
 
+#cart:not(.bot1) #front{
+    animation-name: carta-front;
+    animation-iteration-count: 1;
+    animation-duration: 1.5s;
+}
+
+@keyframes carta-front {
+    0%{
+        transform: perspective(500px) rotateY(0deg);
+    }
+    100%{
+        transform: perspective(500px) rotateY(180deg);    
+}
+    
+
+}
+
+#cart:not(.bot1) #back  {
+    animation-name: carta-back;
+    animation-iteration-count: 1;
+    animation-duration: 1.5s;
+}
+
+@keyframes carta-back {
+    0%{
+        transform: perspective(500px) rotateY(180deg);
+    }
+    100%{
+        transform: perspective(500px) rotateY(360deg);
+    }
+    
+
+}
 
 
-#cart #front {
+/* #Carta-front1{
+    display:none;  
+} */
+
+/* @keyframes carta-back-1 {
+    0%{
+        transform: perspective(500px) rotateY(180deg);
+    }
+    100%{
+        transform: perspective(500px) rotateY(360deg);
+    }
+
+    
+
+} */
+
+
+
+
+/* #cart #front {
+    animation-name: carta-front;
     transform: perspective(500px) rotateY(0deg);
 
 }
@@ -197,13 +251,13 @@ hr {
 }
 
 
-#cart:hover #front {
+#cart:active #front {
     transform: perspective(500px) rotateY(180deg);
 }
 
-#cart:hover #back {
+#cart:active #back {
     transform: perspective(500px) rotateY(360deg);
-}
+} */
 
 
 .bot {
@@ -231,7 +285,30 @@ hr {
 
 }
 
+.bot1 {
 
+    animation-name: tarjetas-l-1;
+    animation-duration: 1s;
+    animation-iteration-count: 1;
+    animation-fill-mode: forwards;
+    animation-direction: normal;
+    transform: translateX(-193px);
+
+}
+
+@keyframes tarjetas-l-1 {
+
+    0% {
+        transform: translateX(-193px);
+    }
+
+    100% {
+
+        transform: translateX(0px);
+    }
+
+
+}
 
 
 .player {
@@ -260,12 +337,10 @@ hr {
 
 }
 
-
-
 #jugador-Baraja {
     display: flex;
     flex-direction: row-reverse;
-    width: 222px;
+    width: 894px;
     align-items: flex-start;
     justify-content: flex-end;
     transform: translateX(22px);

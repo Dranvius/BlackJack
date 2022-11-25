@@ -1,0 +1,88 @@
+async function boton() {
+
+  
+  // Swal.fire({
+  //   title: '¿11 o 1?',
+  //   text: '¿ Qué valor deseas ?',
+  //   //html: por medio de desta propiedad podemos ingrsar codigo html pero borra el contenido de la propiedad text
+  //   icon:'question',
+  //   confirmButtonText: '¡?',
+  //   footer: '<center>Consejo del día <br> Recuerda bañarte</center>',
+  //   width: '20%',
+  //   background: '#fff00',
+    
+  //   //grow: column, row , full
+  //   //backdrop: fondo oscuro false / true
+  //   //timer :5000 tiempo que debe estar la alerta 
+  //   //time progressbar : true or false barra de tiempo parte inferior 
+  //   //toast: true or false alerta pequeñas
+  //   //position: center,top down-,end,star,lefttop/botton/center ....
+
+  //   //!Interración con la ventana
+  //   allowOutsideClick:false, //!Propiedad que permite que la ventana 
+  //   allowEscapeKey: false, //!No permite que otros eventos por tecla funcione
+  //   allowEnterKey: true, //!Bloque la función de ENTER en el popUp
+  //   stopKeydownPropagation: false,
+
+  //   //!Inputs
+  //   input: 'text',
+  //   inputPlaceholder: 'Ingrese texto',
+  //   inputValue: '',
+
+  //   //TODO lista de opciones en sweetAlert
+  //   // input :'select',
+  //   // inputPlaceHolder : 'cuál es su pais',
+  //   // inputValue : '',
+  //   // inputOptions:{
+  //   //   mexico: 'Mexico',
+  //   //   Colombia: 'Colombia',
+
+  //   //  }
+  //   //, !Funciona para customizar y dar clases de los popUp
+  //   // customClass: {
+  //   //   container: '...',
+  //   //   popup: '...',
+  //   //   header: '...',
+  //   //   title: '...',
+  //   //   closeButton: '...',
+  //   //   icon: '...',
+  //   //   image: '...',
+  //   //   htmlContainer: '...',
+  //   //   input: '...',
+  //   //   inputLabel: '...',
+  //   //   validationMessage: '...',
+  //   //   actions: '...',
+  //   //   confirmButton: '...',
+  //   //   denyButton: '...',
+  //   //   cancelButton: '...',
+  //   //   loader: '...',
+  //   //   footer: '....',
+  //   //   timerProgressBar: '....',
+  //   // }
+  //   // ,
+
+  //   //!Realizar proceso de formulario con async
+
+  //   //!Quitar botoón de confirmar
+  //   showConfirmButton: true,
+  //   confirmButtonColor: 'red',
+  //   confirmButtonAriaLabel: 'Confirmar',
+
+  //   //!ingresar botón de cancelar
+
+  //   showCancelButton: true,
+  //   cancelButtonText: 'Denegar',
+  //   cancelButtonColor: 'Black',
+
+  //   //buttonStyling: true, //!Desabilidatr estilos y dejarlos como son en HTML
+  //   //showCloseButton: true, //!Botón para cerrar alerta LA X
+  //   //closeButtonAriaLabel:'cerrar alerta', //!Texto del botón para cerrar alerta
+    
+  //   //!IMAGEN EN LA ALERTA
+  //   // imageUrl: '/img/Card_Model.png',
+  //   // imageWidth: 'auto',
+  //   // imageHeight: 'auto',
+  //   // imageAlt: 'hola mundo' 
+
+  // });
+}

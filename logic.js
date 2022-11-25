@@ -20,129 +20,18 @@ function cleanBoard() {
   return borrados;
 }
 
+function botLogic(sumP) {
+  //*El Valor sumP es la suma que tiene en ese momento la operación
 
+  if (sumP < 11) {
+    console.log("Salida para el bot cuando tiene un valor menor que 11");
 
-async function boton() {
+    return 11;
+  } else {
+    console.log("Salida cuando el bot tiene unv alor mayor o igual a 1");
 
-  const inputOptions = new Promise((resolve) => {
-    setTimeout(() => {
-      resolve({
-        1: '1',
-        11: '11',
-      })
-    }, 1000)
-  })
-  
-  const { value: color } = await Swal.fire({
-    title: 'Usted tiene un AS',
-    icon:'question',
-    text: '¿ Qué valor deseas tomar?',
-    confirmButtonText: 'Gamblind',
-    footer: '<center>Consejo del día<br><br>NO MIRES ATRAS</center>',
-    allowOutsideClick:false, //!Propiedad que permite que la ventana 
-    allowEscapeKey: false, //!No permite que otros eventos por tecla funcione
-    allowEnterKey: true, //!Bloque la función de ENTER en el popUp
-    stopKeydownPropagation: false,
-    customClass: {
-      title: 'titulo-pop',
-      text: 'text-pop'
-    },
-    width: '20%',
-    confirmButtonColor: 'red',
-    input: 'radio',
-    inputOptions: inputOptions,
-    inputValidator: (value) => {
-      if (!value) {
-        return 'Necesitas seleccionar algo primero!'
-      }
-    }
-  })
-
-
-  // Swal.fire({
-  //   title: '¿11 o 1?',
-  //   text: '¿ Qué valor deseas ?',
-  //   //html: por medio de desta propiedad podemos ingrsar codigo html pero borra el contenido de la propiedad text
-  //   icon:'question',
-  //   confirmButtonText: '¡?',
-  //   footer: '<center>Consejo del día <br> Recuerda bañarte</center>',
-  //   width: '20%',
-  //   background: '#fff00',
-    
-  //   //grow: column, row , full
-  //   //backdrop: fondo oscuro false / true
-  //   //timer :5000 tiempo que debe estar la alerta 
-  //   //time progressbar : true or false barra de tiempo parte inferior 
-  //   //toast: true or false alerta pequeñas
-  //   //position: center,top down-,end,star,lefttop/botton/center ....
-
-  //   //!Interración con la ventana
-  //   allowOutsideClick:false, //!Propiedad que permite que la ventana 
-  //   allowEscapeKey: false, //!No permite que otros eventos por tecla funcione
-  //   allowEnterKey: true, //!Bloque la función de ENTER en el popUp
-  //   stopKeydownPropagation: false,
-
-  //   //!Inputs
-  //   input: 'text',
-  //   inputPlaceholder: 'Ingrese texto',
-  //   inputValue: '',
-
-  //   //TODO lista de opciones en sweetAlert
-  //   // input :'select',
-  //   // inputPlaceHolder : 'cuál es su pais',
-  //   // inputValue : '',
-  //   // inputOptions:{
-  //   //   mexico: 'Mexico',
-  //   //   Colombia: 'Colombia',
-
-  //   //  }
-  //   //, !Funciona para customizar y dar clases de los popUp
-  //   // customClass: {
-  //   //   container: '...',
-  //   //   popup: '...',
-  //   //   header: '...',
-  //   //   title: '...',
-  //   //   closeButton: '...',
-  //   //   icon: '...',
-  //   //   image: '...',
-  //   //   htmlContainer: '...',
-  //   //   input: '...',
-  //   //   inputLabel: '...',
-  //   //   validationMessage: '...',
-  //   //   actions: '...',
-  //   //   confirmButton: '...',
-  //   //   denyButton: '...',
-  //   //   cancelButton: '...',
-  //   //   loader: '...',
-  //   //   footer: '....',
-  //   //   timerProgressBar: '....',
-  //   // }
-  //   // ,
-
-  //   //!Realizar proceso de formulario con async
-
-  //   //!Quitar botoón de confirmar
-  //   showConfirmButton: true,
-  //   confirmButtonColor: 'red',
-  //   confirmButtonAriaLabel: 'Confirmar',
-
-  //   //!ingresar botón de cancelar
-
-  //   showCancelButton: true,
-  //   cancelButtonText: 'Denegar',
-  //   cancelButtonColor: 'Black',
-
-  //   //buttonStyling: true, //!Desabilidatr estilos y dejarlos como son en HTML
-  //   //showCloseButton: true, //!Botón para cerrar alerta LA X
-  //   //closeButtonAriaLabel:'cerrar alerta', //!Texto del botón para cerrar alerta
-    
-  //   //!IMAGEN EN LA ALERTA
-  //   // imageUrl: '/img/Card_Model.png',
-  //   // imageWidth: 'auto',
-  //   // imageHeight: 'auto',
-  //   // imageAlt: 'hola mundo' 
-
-  // });
+    return 1;
+  }
 }
 
 function asOption(ente) {
@@ -168,20 +57,89 @@ function darOne(array, index, persona, borrados = null) {
 
   place.appendChild(clon);
   document.getElementById("Carta-front").id =
-  document.getElementById("Carta-front").id;
+    document.getElementById("Carta-front").id;
   document.getElementById("jugador").style.justifyContent = "space-between";
   document.getElementById("Carta-front").id =
-  document.getElementById("Carta-front").id + indecesCart;
-  document.getElementById("Carta-front" + indecesCart).src = "img" + array[index].img + ".png";
+    document.getElementById("Carta-front").id + indecesCart;
+  document.getElementById("Carta-front" + indecesCart).src =
+    "img" + array[index].img + ".png";
+
+  if (indecesCart == 1) {
+    clon.className = persona + indecesCart;
+    document.getElementById("Carta-front" + indecesCart).src = "img/Card_Model.png";
+  }
 }
 
 function reset() {
   location.reload();
 }
 
-function mazo() {
-  //Falta cuadrar link en cada if bien
+// async function ejecutarPopUp() {
+//   const inputOptions = new Promise((resolve) => {
+//     setTimeout(() => {
+//       resolve({
+//         1: "1",
+//         11: "11",
+//       });
+//     }, 1000);
+//   });
 
+//   const { value: valor } = await Swal.fire({
+//     title: "Usted tiene un AS",
+//     icon: "question",
+//     text: "¿ Qué valor deseas tomar?",
+//     confirmButtonText: "Gamblind",
+//     footer: "<center>Consejo del día<br><br>NO MIRES ATRAS</center>",
+//     allowOutsideClick: false, //!Propiedad que permite que la ventana
+//     allowEscapeKey: false, //!No permite que otros eventos por tecla funcione
+//     allowEnterKey: true, //!Bloque la función de ENTER en el popUp
+//     stopKeydownPropagation: false,
+//     customClass: {
+//       title: "titulo-pop",
+//       text: "text-pop",
+//     },
+//     width: "20%",
+//     confirmButtonColor: "red",
+//     input: "radio",
+//     inputOptions: inputOptions,
+//     inputValidator: (value) => {
+//       if (!value) {
+//         return "Necesitas seleccionar algo primero!";
+//       }
+//     },
+//   });
+
+//   return valor;
+// }
+
+function pedir(arr, baraja, ente, cartaExample) {
+  //!Dar una carta a un array de baraja
+  //!Crear una instancia de carta
+  //?Poner la carta en alguno de los mazos
+
+  arr.push(baraja.shift()); //!Incluir una carta al array
+
+  let clon = cartaExample.cloneNode(true);
+
+    indecesCart += 1;
+
+  let place =
+    ente == "player"
+      ? document.getElementById("jugador-Baraja")
+      : document.getElementById("cartas-bot-Baraja");
+
+  clon.className = ente;
+
+  place.appendChild(clon);
+  document.getElementById("Carta-front").id = document.getElementById("Carta-front").id;
+  document.getElementById("jugador").style.justifyContent = "space-between";
+  document.getElementById("Carta-front").id = document.getElementById("Carta-front").id + indecesCart;
+  document.getElementById("Carta-front" + indecesCart).src = "img" + arr[arr.length-1].img + ".png";
+
+
+}
+
+function mazo() {
   let mazoR = []; //Array de mazo
   let type = "/diamont";
 
@@ -232,6 +190,70 @@ function mazo() {
   }
 
   return mazoR;
+}
+
+async function sumArray(arr, ente) { //!Problema
+  let sum = 0;
+
+  for (let i = 0; i < arr.length; i++) {
+    if (arr[i].valor == 11 || arr[i].valor == 12 || arr[i].valor == 13) {
+      sum += 10;
+    } else if (arr[i].valor == 1) {
+      if (ente == "player") {
+        //!Ejecutar un mensaje que permita escoger a usuario una opcion para el As
+        //?Ejecutar logica PLAYER
+        //*Ejecuta el PoP de selección
+        sum += setTimeout(async () => {
+          
+          const inputOptions = new Promise((resolve) => {
+            setTimeout(() => {
+              resolve({
+                1: "1",
+                11: "11",
+              });
+            }, 1000);
+          });
+        
+          const { value: valor } = await Swal.fire({
+            title: "Usted tiene un AS",
+            icon: "question",
+            text: "¿ Qué valor deseas tomar?",
+            confirmButtonText: "Gamblind",
+            footer: "<center>Consejo del día<br><br>NO MIRES ATRAS</center>",
+            allowOutsideClick: false, //!Propiedad que permite que la ventana
+            allowEscapeKey: false, //!No permite que otros eventos por tecla funcione
+            allowEnterKey: true, //!Bloque la función de ENTER en el popUp
+            stopKeydownPropagation: false,
+            customClass: {
+              title: "titulo-pop",
+              text: "text-pop",
+            },
+            width: "20%",
+            confirmButtonColor: "red",
+            input: "radio",
+            inputOptions: inputOptions,
+            inputValidator: (value) => {
+              if (!value) {
+                return "Necesitas seleccionar algo primero!";
+              }
+            },
+          });
+
+
+        }, 5000); //!Devulver el valor que desea el usuario //!Toma solo 1
+      } else {
+        sum += botLogic(sum);
+      }
+    } else {
+      sum += arr[i].valor;
+    }
+  }
+
+  if (sum == 21) {
+    console.log("!  Fin del juego   !El ganador es : " + ente);
+  }
+
+  return sum;
 }
 
 //!Funciones para barrajear la baraja
@@ -289,6 +311,10 @@ function new_game() {
   let bot = [];
   let player = [];
 
+  //Tener una plantilla de carta limpiar tablero
+
+  let borrados = cleanBoard(); //!No puede ser reducido;
+
   //Construir el lugar de las cartas de los dos jugadores.
 
   //!Jugador
@@ -332,6 +358,10 @@ function new_game() {
   a.innerText = "Pedir";
   b.innerText = "Quedarse";
   c.innerText = "OMG";
+
+  a.addEventListener("click", (_) => {
+    pedir(player, mazoVirgen, 'player',borrados);
+  }); //!Hello
 
   c.addEventListener("click", (_) => {
     location.reload();
@@ -377,13 +407,14 @@ function new_game() {
 
   darInicio(mazoVirgen, bot, player);
 
-  //Crear instancia de etiqueta por medio del DOM de las cartas
 
-  //Tener una plantilla de carta limpiar tablero
 
-  let borrados = cleanBoard(); //!No puede ser reducido;
+  //Establecer suma en el tablero
 
-  //!Colocar cartas en el tablero dependiendo de las cartas almacenadas en el array
+  let scoreBot = sumArray(bot, "bot");
+  let scorePlayer = sumArray(player, "player");
+  console.log(scoreBot);
+  console.log(scorePlayer);
 
   //?Buscar como reducir la logica de ejecución
 
@@ -401,72 +432,10 @@ function new_game() {
 
   setTimeout(() => {
     darOne(player, 1, "player", borrados);
-  }, 4500);
+  }, 5500);
 
   //Realizar Suma por sus valores determinados
 
-//*Extraer valores de los ARRAYS
-//TODO Hacer uso de VALUE
-//!TENER EN CUENTA EL VALOR DE AZ
-//?La suma debe estar dentro de la función de repartir ?
+ 
 
-  function sumArray(arr, ente) {
-    let sum = 0;
-
-    for (let i = 0; i < arr.length; i++) {
-      if (arr[i].valor == 11 || arr[i].valor == 12 || arr[i].valor == 13) {
-        sum += 10;
-      } else if (arr[i].valor == 1) {
-        if (ente == "player") {
-          //!Ejecutar un mensaje que permita escoger a usuario una opcion para el As
-          //*Ejecutar logica PLAYER
-          //sum += funciónDeEscogerValor 
-        } else {
-          //*Ejecutar logica del BOT
-        }
-      } else {
-        sum += arr[i].valor;
-      }
-    }
-
-
-    //!DEBE ESATR ATENTO A SI GANA O PIERDE
-    return sum;
-  }
-
-  function botLogic(sumP){
-
-    //*El Valor sumP es la suma que tiene en ese momento la operación
-    
-      if(sumP < 11){
-
-        return 11;
-  
-      }else{
-  
-        return 1;
-  
-      }
-
-  }
-
-
-  function playerOption(){
-
-    //?Cómo devolver un valor por medio de la ventana emergente
-      //TODO ¿ Es encesario programar un evento or medio de una ventana emergente ?
-      //!TRER EVECUCIÓN DE COMENTARIO.
-
-
-
-
-
-    return Number
-  }
-
-
-
-  //?Programar botón dar carta
-    //!CADA VEZ QUE DE UNA CARTA NUEVA DEBE ESTAR ATENTO A SI GANA O PIERDE
-    //!nECESARIO UNA FUNCIÓN SUMA QUE SE LLAME A SI MISMA MUCHAS VECES HASTA QUE MUESTRE UN PARAMETRO DE SALIDA
 }
