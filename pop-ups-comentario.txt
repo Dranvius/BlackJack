@@ -1,3 +1,5 @@
+//JS
+
 async function boton() {
 
   
@@ -86,3 +88,80 @@ async function boton() {
 
   // });
 }
+
+// async function ejecutarPopUp() {
+//   const inputOptions = new Promise((resolve) => {
+//     setTimeout(() => {
+//       resolve({
+//         1: "1",
+//         11: "11",
+//       });
+//     }, 1000);
+//   });
+
+//   const { value: valor } = await Swal.fire({
+//     title: "Usted tiene un AS",
+//     icon: "question",
+//     text: "¿ Qué valor deseas tomar?",
+//     confirmButtonText: "Gamblind",
+//     footer: "<center>Consejo del día<br><br>NO MIRES ATRAS</center>",
+//     allowOutsideClick: false, //!Propiedad que permite que la ventana
+//     allowEscapeKey: false, //!No permite que otros eventos por tecla funcione
+//     allowEnterKey: true, //!Bloque la función de ENTER en el popUp
+//     stopKeydownPropagation: false,
+//     customClass: {
+//       title: "titulo-pop",
+//       text: "text-pop",
+//     },
+//     width: "20%",
+//     confirmButtonColor: "red",
+//     input: "radio",
+//     inputOptions: inputOptions,
+//     inputValidator: (value) => {
+//       if (!value) {
+//         return "Necesitas seleccionar algo primero!";
+//       }
+//     },
+//   });
+
+//   return valor;
+// }
+
+/* #Carta-front1{
+    display:none;  
+} */
+
+/* @keyframes carta-back-1 {
+    0%{
+        transform: perspective(500px) rotateY(180deg);
+    }
+    100%{
+        transform: perspective(500px) rotateY(360deg);
+    }
+
+    
+
+} */
+
+//!CSS
+
+
+/* #cart #front {
+    animation-name: carta-front;
+    transform: perspective(500px) rotateY(0deg);
+
+}
+
+
+#cart #back {
+    transform: perspective(500px) rotateY(180deg);
+}
+
+
+#cart:active #front {
+    transform: perspective(500px) rotateY(180deg);
+}
+
+#cart:active #back {
+    transform: perspective(500px) rotateY(360deg);
+} */

@@ -2,12 +2,9 @@
 
 body {
 
-    
-
     padding: 0px;
 
     color: white;
-
 
     background: rgba(169, 3, 41, 1);
     background: -moz-linear-gradient(left, rgba(169, 3, 41, 1) 0%, rgba(143, 2, 34, 1) 44%, rgba(109, 0, 25, 1) 100%);
@@ -129,18 +126,11 @@ hr {
 
 }
 
-#HOPE {
-
-    display: none;
-
-}
-
 #centro {
     font-size: 30px;
     width: 1225px;
     font-family: 'Raleway', sans-serif;
     display: flex;
-    /* padding: 32px; */
     justify-content: space-evenly;
     align-items: center;
     padding-top: 50px;
@@ -229,46 +219,6 @@ hr {
     
 
 }
-
-
-/* #Carta-front1{
-    display:none;  
-} */
-
-/* @keyframes carta-back-1 {
-    0%{
-        transform: perspective(500px) rotateY(180deg);
-    }
-    100%{
-        transform: perspective(500px) rotateY(360deg);
-    }
-
-    
-
-} */
-
-
-
-
-/* #cart #front {
-    animation-name: carta-front;
-    transform: perspective(500px) rotateY(0deg);
-
-}
-
-
-#cart #back {
-    transform: perspective(500px) rotateY(180deg);
-}
-
-
-#cart:active #front {
-    transform: perspective(500px) rotateY(180deg);
-}
-
-#cart:active #back {
-    transform: perspective(500px) rotateY(360deg);
-} */
 
 
 .bot {

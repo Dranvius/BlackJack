@@ -1,9 +1,10 @@
 "use strict";
-
+//!Uso de variable global para establecer uso de cartas
 let indecesCart = 0;
+let sumGlobal = 0;
+let sumGobalBot = 0;
 
-//Función para construir una baraja
-
+//!Función utilizada como plantilla de cartas para crear varios objetos tipo Carta
 function Carta(tipo, valor, img) {
   //Plantilla de objetos
 
@@ -12,20 +13,149 @@ function Carta(tipo, valor, img) {
   this.img = img;
 }
 
-const endGame = (Ente) => {
+function botSum (arr){
 
-  swal.fire({
-    title: 'El ganador es : '+Ente,
-    text: 'Buen juego',
-    width: "20%",
-    confirmButtonColor: "red",
-    icon: "warning"
-  })
-  
-  setTimeout(reset(),3000)
+  let sum = 0
+
+  for (let i = 0; i < arr.length; i++) {
+
+    if (arr[i].valor == 11 || arr[i].valor == 12 || arr[i].valor == 13) {
+      
+      sum += 10;
+
+    } else if (arr[i].valor == 1) {
+      
+      sum += botLogic(sum);
+
+    } else {
+      
+      sum += arr[i].valor;
+
+    }
+  }
+
+  console.log("Soy la suma del bot" +sum);
+return sum;
 
 }
 
+//!Función utilizada para finalizar el juego por mensaje
+const endGame = (Ente) => {
+  swal.fire({
+    title: "El ganador es : " + Ente,
+    text: "Buen juego",
+    width: "20%",
+    showConfirmButton: true,
+    icon: "warning",
+  });
+
+  setTimeout(() => {reset()}, 30000); //*Ojo con el tiempo
+};
+
+
+
+function ganador(resultadoBot,resultadoPlayer){
+
+  resultadoBot = 21 - resultadoBot;
+  resultadoPlayer = 21 -resultadoPlayer; 
+
+  if(resultadoBot > resultadoPlayer && resultadoBot < 21){
+   
+    endGame("BOT");
+
+  }else if( resultadoBot == resultadoPlayer){
+
+    document.write("Nadie gano y todos se murieron");
+
+  }else if (resultadoBot < resultadoPlayer && resultadoPlayer < 21){
+
+    endGame("player");
+
+  }
+
+
+
+}
+
+
+
+
+
+function totalBot(sumatoriaInicial,parametroSalida){ 
+
+  if(sumatoriaInicial < 15 && parametroSalida == 0){
+
+      pedir(arr,baraja,"bot",cartaExample,valor).then(valorSuma =>{
+
+        parametroSalida = (valorSuma < 15) ? 0 : 1;
+    
+        totalBot(valorSuma,parametroSalida);
+
+      })
+
+
+
+  }else{
+
+
+
+
+    return totalBot
+  }
+
+
+
+}
+
+const quedar = function (arrBot,cartaExample,baraja){
+
+  let nodoPadre = document.getElementById("cartas-bot-Baraja");
+
+
+  let clon = cartaExample.cloneNode(true);
+    let img = arrBot[0].img;
+    console.log(img);
+    clon.id = "cart";
+    clon.className = "cartaRevelada"
+    
+
+  nodoPadre.replaceChild(clon,document.getElementsByClassName("bot1")[0])
+  document.querySelector(".cartaRevelada #Carta-front").id = "Carta-front1"
+  document.querySelector("#Carta-front1").src = "img/"+ img + ".png";
+
+  let primer = sumArray(arrBot,"Bot") 
+
+
+  primer.then(valor =>{
+            
+
+    let cambioPromesa = valor
+      let comprobante = 0;
+
+    while(cambioPromesa < 20){
+      console.log("Cambio de variable exogena " +cambioPromesa);
+      comprobante += 1;
+      console.log(comprobante);
+
+
+      cambioPromesa = pedir(arrBot,baraja,"bot",cartaExample,sumArray);
+
+      // 
+    }
+
+    ponerSumEnTablero(cambioPromesa,"Bot")
+
+    ganador(cambioPromesa,sumGlobal);
+
+
+
+
+  })
+
+}
+
+//!Función utilizada para limpiar el talero al inicio del juego
+//?Devuelve la el NODO borrado
 function cleanBoard() {
   let etiqueta = document.getElementById("bot-Baraja");
   let especificoInterno = document.getElementById("cart");
@@ -33,7 +163,7 @@ function cleanBoard() {
 
   return borrados;
 }
-
+//!Función utilizada para establecer la logica del BOT
 function botLogic(sumP) {
   //*El Valor sumP es la suma que tiene en ese momento la operación
 
@@ -47,9 +177,9 @@ function botLogic(sumP) {
     return 1;
   }
 }
-
+//!Función utilizada para dar dos tarjeta a los jugadores al inicio del juego
 function darOne(array, index, persona, borrados = null) {
-  indecesCart += 1;
+  indecesCart += 1; //!Variable global para conocer el indice global de cartas en el juego
 
   let clon = borrados.cloneNode(true);
 
@@ -75,82 +205,17 @@ function darOne(array, index, persona, borrados = null) {
       "img/Card_Model.png";
   }
 }
-
+//!Función que resetea el juego
+//*No es muy necesaria
 function reset() {
   location.reload();
 }
 
-// async function ejecutarPopUp() {
-//   const inputOptions = new Promise((resolve) => {
-//     setTimeout(() => {
-//       resolve({
-//         1: "1",
-//         11: "11",
-//       });
-//     }, 1000);
-//   });
+//!Función programada para el boton borrar
+//todo Esta en refactorización
 
-//   const { value: valor } = await Swal.fire({
-//     title: "Usted tiene un AS",
-//     icon: "question",
-//     text: "¿ Qué valor deseas tomar?",
-//     confirmButtonText: "Gamblind",
-//     footer: "<center>Consejo del día<br><br>NO MIRES ATRAS</center>",
-//     allowOutsideClick: false, //!Propiedad que permite que la ventana
-//     allowEscapeKey: false, //!No permite que otros eventos por tecla funcione
-//     allowEnterKey: true, //!Bloque la función de ENTER en el popUp
-//     stopKeydownPropagation: false,
-//     customClass: {
-//       title: "titulo-pop",
-//       text: "text-pop",
-//     },
-//     width: "20%",
-//     confirmButtonColor: "red",
-//     input: "radio",
-//     inputOptions: inputOptions,
-//     inputValidator: (value) => {
-//       if (!value) {
-//         return "Necesitas seleccionar algo primero!";
-//       }
-//     },
-//   });
 
-//   return valor;
-// }
-
-function pedir(arr, baraja, ente, cartaExample) {
-  //!Dar una carta a un array de baraja
-  //!Crear una instancia de carta
-  //?Poner la carta en alguno de los mazos
-
-  arr.push(baraja.shift()); //!Incluir una carta al array
-
-  let clon = cartaExample.cloneNode(true);
-
-  indecesCart += 1;
-
-  let place =
-    ente == "player"
-      ? document.getElementById("jugador-Baraja")
-      : document.getElementById("cartas-bot-Baraja");
-
-  clon.className = ente;
-
-  place.appendChild(clon);
-  document.getElementById("Carta-front").id =
-    document.getElementById("Carta-front").id;
-  document.getElementById("jugador").style.justifyContent = "space-between";
-  document.getElementById("Carta-front").id =
-    document.getElementById("Carta-front").id + indecesCart;
-  document.getElementById("Carta-front" + indecesCart).src =
-    "img" + arr[arr.length - 1].img + ".png";
-
-  sumArray(arr,ente).then(valor =>{
-    ponerSumEnTablero(valor,ente)
-  })
-
-}
-
+//!Función utilizada para organizar crear mazo incial
 function mazo() {
   let mazoR = []; //Array de mazo
   let type = "/diamont";
@@ -201,106 +266,256 @@ function mazo() {
 
   return mazoR;
 }
+//!Funcion para dar una carta al incio del juego por orden y posición
+function darInicio(array, playerOne, playerTwo) {
+  for (let i = 0; i < 4; i++) {
+    if (i == 0 || i == 1) {
+      playerOne.push(array.shift());
+    } else if (i == 2 || i == 3) {
+      playerTwo.push(array.shift());
+    }
+  }
+}
 
-function ponerSumEnTablero(sum,ente){ //!Hay que acomodar el puntaje para el bot cuando se presione me quedo
+//!Establecer suma en tablero 
+function ponerSumEnTablero(sum, ente) {
+  //!Hay que acomodar el puntaje para el bot cuando se presione me quedo
 
+  console.log(ente)
+  let child = document.createElement("h6");
 
-  if(document.getElementById('hollow') == null){
+  if (document.getElementById("hollow") == null && document.getElementById("playerScore") != null && ente == "player" ) {
 
-    // document.getElementById('playerScore').removeChild(document.getElementById(''));
-    child.innerText = 'PLAYER : ' +sum;
+    //!document.getElementById('playerScore').removeChild(document.getElementById(''));
+    document.getElementById("scoreEnd").innerText = "PLAYER : " + sum;
 
-  }else{
+  }else if(document.getElementById("jack") == null && document.getElementById("BotScore") != null && ente == "Bot"){
+    console.log("Dentro de Bot")
+    document.getElementById("scoreEndBot").innerText = "Bot : " + sum;
 
-    document.getElementById('playerScore').removeChild(document.getElementById('hollow'))
-    let place = '';
-    let child =  '';
+   }else{
+    console.log("unaVez")
+   
+  if(document.getElementById("hollow") != null ){
+    document.getElementById("playerScore").removeChild(document.getElementById("hollow"));
 
-    if(ente = 'player'){
+  }else if(document.getElementById("jack") != null ){
+    document.getElementById("BotScore").removeChild(document.getElementById("jack"));
 
-      place = document.getElementById('playerScore');
-      child = document.createElement('h6');
-      child.innerText = 'PLAYER : ' +sum;
-      console.log(sum);
+  }
+
+    console.log(ente);
+    let place = "";
+
+    if (ente == "player") {
+      place = document.getElementById("playerScore");
+      child.innerText = "PLAYER : " + sum;
+      child.id = "scoreEnd";
 
       place.appendChild(child);
 
-    }else{
+    } else {
+      console.log("Primera entrada en tablero BOT")
+      place = document.getElementById("BotScore"); //!Establecer Logica para bot******************************
+      child.innerText = "Bot : " + sum;
+      child.id = "scoreEndBot";
 
-      place = document.getElementById();
-      console.log(sum);
-
+      place.appendChild(child);
     }
-
-
   }
-  
-
 }
 
+//!Establecer suma de array en el tablero
+  //!Establecer un refactorizador
+async function sumArray(arr, ente, sumAnterior = null) {
 
-async function sumArray(arr, ente) {
-  let sum = 0;
+  if(ente == "player"){
 
-  for (let i = 0; i < arr.length; i++) {
-    if (arr[i].valor == 11 || arr[i].valor == 12 || arr[i].valor == 13) {
-      sum += 10;
-    } else if (arr[i].valor == 1) {
-      if (ente == "player") {
-        console.time("Tiempo" + i);
+    let sum = 0;
 
+  const propiedades = {
+    title: "Usted tiene un AS",
+    icon: "question",
+    text: "¿ Qué valor deseas tomar?",
+    confirmButtonText: "Gamblind",
+    footer: "<center>Consejo del día<br><br>NO MIRES ATRAS</center>",
+    allowOutsideClick: false, //!Propiedad que permite que la ventana
+    allowEscapeKey: false, //!No permite que otros eventos por tecla funcione
+    allowEnterKey: true, //!Bloque la función de ENTER en el popUp
+    stopKeydownPropagation: false,
+    customClass: {
+      title: "titulo-pop",
+      text: "text-pop",
+    },
+    width: "20%",
+    confirmButtonColor: "red",
+    input: "radio",
+    inputOptions: new Promise((resolve) => {
+      setTimeout(() => {
+        resolve({
+          1: "1",
+          11: "11",
+        });
+      }, 1000);
+    }),
+    inputValidator: (value) => {
+      if (!value) {
+        return "Necesitas seleccionar algo primero!";
+      }
+    },
+  };
 
-          const propiedades = {
-          title: "Usted tiene un AS",
-          icon: "question",
-          text: "¿ Qué valor deseas tomar?",
-          confirmButtonText: "Gamblind",
-          footer: "<center>Consejo del día<br><br>NO MIRES ATRAS</center>",
-          allowOutsideClick: false, //!Propiedad que permite que la ventana
-          allowEscapeKey: false, //!No permite que otros eventos por tecla funcione
-          allowEnterKey: true, //!Bloque la función de ENTER en el popUp
-          stopKeydownPropagation: false,
-          customClass: {
-            title: "titulo-pop",
-            text: "text-pop",
-          },
-          width: "20%",
-          confirmButtonColor: "red",
-          input: "radio",
-          inputOptions: new Promise((resolve) => {
-            setTimeout(() => {
-              resolve({
-                1: "1",
-                11: "11",
-              });
-            }, 1000);
-          }),
-          inputValidator: (value) => {
-            if (!value) {
-              return "Necesitas seleccionar algo primero!";
-            }
-          },
-          };
+  if (sumAnterior == null) {
+    console.log("Soy la primera suma");
 
+    for (let i = 0; i < arr.length; i++) {
+      if (arr[i].valor == 11 || arr[i].valor == 12 || arr[i].valor == 13) {
+        sum += 10;
+      } else if (arr[i].valor == 1) {
+        if (ente == "player") {
+          
           let { value: valor } = await swal.fire(propiedades);
 
           sum += parseInt(valor);
 
-        console.timeEnd("Tiempo" + i);
+          
+        } else {
+          sum += botLogic(sum);
+        }
       } else {
-        sum += botLogic(sum);
+        sum += arr[i].valor;
       }
+    }
+
+    //Pensar en retornar algo
+
+   
+
+  } else {
+
+
+    if (arr[arr.length - 1].valor == 1) {
+
+      let { value: valor } = await swal.fire(propiedades);
+
+
+        sumGlobal += parseInt(valor);
+        sum = sumGlobal ; 
+
+
+      // return sum; //!POSIBLE ERROR A
+
+    } else if (
+      arr[arr.length - 1].valor == 11 ||
+      arr[arr.length - 1].valor == 12 ||
+      arr[arr.length - 1].valor == 13
+    ) {
+
+
+      sumGlobal += 10;
+      sum = sumGlobal;
+
+
+      
     } else {
-      sum += arr[i].valor;
+
+      sumGlobal += arr[arr.length - 1].valor
+
+      sum = sumGlobal;
+
+    
+
+
     }
   }
 
   if (sum == 21) {
     endGame(ente);
+  } else if (sum > 21){
+    let ganadorFinal = (ente == "player") ? "bot" : "player"
+    console.log("Gnador en sumArray "+ganadorFinal);
+    endGame(ganadorFinal);
   }
 
+  console.log("Valor de retorno :" + sum);
+  sumGlobal = sum;
+
   return sum;
+
+
+  }else{
+    let sum = 0
+
+    for (let i = 0; i < arr.length; i++) {
+
+      if (arr[i].valor == 11 || arr[i].valor == 12 || arr[i].valor == 13) {
+        
+        sum += 10;
+
+      } else if (arr[i].valor == 1) {
+        
+        sum += botLogic(sum);
+
+      } else {
+        
+        sum += arr[i].valor;
+
+      }
+    }
+
+    console.log("Soy la suma del bot" +sum);
+  return sum;
+  }
+
+  
 }
+
+
+
+function pedir(arr, baraja, ente = 'player',cartaExample, promesaSecuencial) {
+
+  arr.push(baraja.shift()); 
+
+  let clon = cartaExample.cloneNode(true); 
+
+  indecesCart += 1;
+
+  let place = ente == "player" ? document.getElementById("jugador-Baraja") : document.getElementById("cartas-bot-Baraja");
+
+  if( ente == "player" ){
+
+    clon.className = ente;
+    place.appendChild(clon);
+    
+    document.getElementById("jugador").style.justifyContent = "space-between";
+    document.getElementById("Carta-front").id = document.getElementById("Carta-front").id + indecesCart;
+    document.getElementById("Carta-front" + indecesCart).src = "img" + arr[arr.length - 1].img + ".png";
+  
+    promesaSecuencial(arr, "player", sumGlobal).then((valor) => {
+      sumGlobal = valor;      
+      console.log(sumGlobal);
+      ponerSumEnTablero(sumGlobal, ente);
+    });
+
+  }else{
+    //!Bot
+    clon.className = ente;
+    
+    place.appendChild(clon);
+    document.getElementById("Carta-front").id = document.getElementById("Carta-front").id + indecesCart;
+    document.getElementById("Carta-front" + indecesCart).src = "img" + arr[arr.length - 1].img + ".png";
+  
+    ponerSumEnTablero(botSum(arr),"Bot")
+
+    return botSum(arr);
+   
+
+
+  }
+
+}
+
+
 
 //!Funciones para barrajear la baraja
 //! ###### 1 ######### Función de barajeo
@@ -312,28 +527,11 @@ function fisherYatesShuffle(arr) {
 }
 
 //Funcion para poner cartas en el tablero
-
-//fisherYatesShuffle(mazoVirgen)
+  //*fisherYatesShuffle(mazoVirgen)
 
 //! ###### 2 ######### _.shuffle
 
-//mazoVirgen = _.shuffle(mazoVirgen);
-
-//!Funcion para dar una carta al incio del juego
-
-function darInicio(array, playerOne, playerTwo) {
-  for (let i = 0; i < 4; i++) {
-    if (i == 0 || i == 1) {
-      playerOne.push(array.shift());
-    } else if (i == 2 || i == 3) {
-      playerTwo.push(array.shift());
-    }
-  }
-}
-
-const quedarse = () =>{
-
-}
+  //mazoVirgen = _.shuffle(mazoVirgen);
 
 //!Funcion para iniciar el juego
 function new_game() {
@@ -395,7 +593,7 @@ function new_game() {
   //Creación de botones
   let a = document.createElement("a");
   let b = document.createElement("a");
-  let c = document.createElement("a");
+  let c = document.createElement("a");      //!Simplificar con removeNode
 
   //?Etiqueta a - 3 botones
   a.className = "btn-neon";
@@ -405,19 +603,15 @@ function new_game() {
   //?Texto de la etiqueta
 
   a.innerText = "Pedir";
-  b.innerText = "Quedarse";
+  b.innerText = "Quedarse";     //Modificar por medio de un NODE
   c.innerText = "OMG";
-
-  a.addEventListener("click", (_) => {
-    pedir(player, mazoVirgen, "player", borrados);
-  }); //!Hello
 
   c.addEventListener("click", (_) => {
     location.reload();
-  }); //!Hello
+  });
 
-  b.addEventListener("click", (_) =>{
-    
+  b.addEventListener("click", (_) => {
+    quedar(bot,borrados,mazoVirgen ); //*Falta
   });
 
   //Ingresar botones dentro de la etiqueta
@@ -429,7 +623,7 @@ function new_game() {
   //Span dentro de la etiqueta
   let s_1 = document.createElement("span");
   let s_2 = document.createElement("span");
-  let s_3 = document.createElement("span");
+  let s_3 = document.createElement("span"); //!mODIFICAR POR MEDIO DE REMOVE NODE ALMACENADO
   let s_4 = document.createElement("span");
   let s_5 = document.createElement("span");
   let s_6 = document.createElement("span");
@@ -455,24 +649,32 @@ function new_game() {
   c.appendChild(s_6);
 
   //Dar carta a los dos jugadores
+    //*llenar array
 
   darInicio(mazoVirgen, bot, player);
 
   //Establecer suma en el tablero
-
-  let scoreBot = sumArray(bot, "bot");
+    //!Primedo debe ser playerOne
+    //!Despues debe ser bot pero despues de presionar el boton quedarse
   let scorePlayer = sumArray(player, "player");
 
+  scorePlayer.then(
+    (valor) => {
+      ponerSumEnTablero(valor, "player");
+    },
+    (error) => console.log(error)
+  );
+
+  a.addEventListener("click", (_) => {  
   
+    scorePlayer.then((valorSumInicial) => {
+      pedir(player, mazoVirgen, "player",borrados,sumArray);
+    });
 
-  scoreBot.then(valor => console.log(valor), error => console.log(error));
-
-  scorePlayer.then( valor =>  ponerSumEnTablero(valor,'player'), error => console.log(error));
-
-
- 
-
+  }); 
+  
   //?Buscar como reducir la logica de ejecución
+    //!Posible simplificación con un for
 
   setTimeout(() => {
     darOne(bot, 0, "bot", borrados);
