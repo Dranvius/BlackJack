@@ -17,8 +17,18 @@
     <button id="test"> TEST </button>
 
 
-    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <script src="/baraja.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="./baraja.js"></script>
+    <script>
+      document.getElementById('test').addEventListener('click', () => {
+        const deck = mazo();
+        if (deck.length === 52) {
+          console.log('El mazo tiene 52 cartas');
+        } else {
+          console.error('Error: el mazo no tiene 52 cartas');
+        }
+      });
+    </script>
 
     
 
