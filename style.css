@@ -16,6 +16,11 @@ body {
     filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#a90329', endColorstr='#6d0019', GradientType=1);
 }
 
+img {
+    max-width: 100%;
+    height: auto;
+}
+
 #titulo-pop{
     color: red;
 }
@@ -33,7 +38,6 @@ body {
 
 
 #bot-Baraja {
-
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
@@ -41,7 +45,9 @@ body {
     align-content: center;
     align-items: baseline;
     justify-content: space-between;
-    width: 1221px;
+    width: 100%;
+    max-width: 1221px;
+    box-sizing: border-box;
 }
 
 .btn-neon {
@@ -128,14 +134,15 @@ hr {
 
 #centro {
     font-size: 30px;
-    width: 1225px;
+    width: 100%;
+    max-width: 1225px;
     font-family: 'Raleway', sans-serif;
     display: flex;
     justify-content: space-evenly;
     align-items: center;
     padding-top: 50px;
     padding-bottom: 90px;
-
+    box-sizing: border-box;
 }
 
 #picture {
@@ -301,19 +308,22 @@ hr {
 #jugador-Baraja {
     display: flex;
     flex-direction: row-reverse;
-    width: 894px;
+    width: 100%;
+    max-width: 894px;
     align-items: flex-start;
     justify-content: flex-end;
-    transform: translateX(22px);
+    box-sizing: border-box;
+    transform: translateX(0);
 }
 
 
 #cartas-bot-Baraja {
     display: flex;
-    width: 1029px;
+    width: 100%;
+    max-width: 1029px;
     justify-content: flex-end;
     flex-direction: row-reverse;
-
+    box-sizing: border-box;
 }
 
 @media (max-width: 768px) {
