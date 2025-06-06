@@ -264,7 +264,11 @@ export function new_game() {
   botPlace.appendChild(elementoBot);
   let div = document.createElement('div');
   div.id = 'Botones-Play';
+
   div.style = 'display:flex';
+
+  div.style = 'display=flex';
+
   etiqueta.appendChild(div);
   let a = document.createElement('a');
   let b = document.createElement('a');

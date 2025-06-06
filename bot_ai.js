@@ -29,7 +29,11 @@ export class BotAI {
     localStorage.setItem('bot_threshold', this.threshold.toFixed(2));
   }
 
+
   async exportCSV() {
+
+  exportCSV() {
+
     const header = 'playerSum,botSum,winner,threshold';
     const rows = this.history.map(r => `${r.player},${r.bot},${r.winner},${r.threshold}`);
     const csv = [header, ...rows].join('\n');
@@ -40,8 +44,13 @@ export class BotAI {
       a.download = 'blackjack_history.csv';
       a.click();
     } else {
+
       const { writeFileSync } = await import('fs');
       writeFileSync('blackjack_history.csv', csv);
+
+      const fs = require('fs');
+      fs.writeFileSync('blackjack_history.csv', csv);
+
     }
   }
 }
