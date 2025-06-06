@@ -316,3 +316,31 @@ hr {
 
 }
 
+@media (max-width: 768px) {
+  #bot-Baraja,
+  #centro,
+  #jugador-Baraja,
+  #cartas-bot-Baraja {
+    width: 100%;
+    justify-content: center;
+  }
+
+  #picture {
+    width: 80px;
+    height: 80px;
+  }
+
+  #jugador {
+    flex-direction: column;
+    height: auto;
+  }
+
+  #centro {
+    font-size: 20px;
+  }
+
+  .btn-neon {
+    padding: 10px 20px;
+    font-size: 14px;
+  }
+}
