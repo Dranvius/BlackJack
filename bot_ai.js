@@ -1,3 +1,5 @@
+import fs from 'fs';
+
 export class BotAI {
   constructor() {
     const t = parseFloat(localStorage.getItem('bot_threshold'));
@@ -39,7 +41,6 @@ export class BotAI {
       a.download = 'blackjack_history.csv';
       a.click();
     } else {
-      const fs = require('fs');
       fs.writeFileSync('blackjack_history.csv', csv);
     }
   }
