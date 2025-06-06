@@ -1,0 +1,7 @@
+{
+  "name": "blackjack",
+  "type": "module",
+  "scripts": {
+    "test": "node --test"
+  }
+}
